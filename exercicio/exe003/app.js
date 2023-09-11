@@ -13,9 +13,13 @@
     valor no console.
 */
 
-function convertToString (value) {
-  return String(value)
-}
+// function convertToString (value) {
+//   return String(value)
+// }
+
+const convertToString = (value) => String(value)
+
+console.log(convertToString(12))
 
 /*
   02
@@ -23,6 +27,10 @@ function convertToString (value) {
   - Crie uma função que retorne a quantidade de caracteres que uma string  
     recebida por parâmetro possui.
 */
+
+const counterCaractere = (string) => string.length
+
+console.log(counterCaractere('Olá, mundo'))
 
 /*
   03
@@ -34,6 +42,10 @@ function convertToString (value) {
   "CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO"
 */
 
+const transformeToLowerCase = (string) => string.toLowerCase()
+
+
+console.log(transformeToLowerCase(`CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO`))
 /*
   04
 
@@ -41,12 +53,22 @@ function convertToString (value) {
   - Ao ser invocada, a função deve retornar o index do caractere na string.
 */
 
+const returnIndexCaracter = (caracter, string) => string.indexOf(caracter)
+
+console.log(returnIndexCaracter('@','sandro@sodre.com'))
+
 /*
   05
 
   - Crie uma função que, ao ser invocada, retorna um boolean indicando se o item  
     passado por argumento existe no array (também passado por argumento).
 */
+
+const itemExitInArray = (item, array) => array.includes(item)
+
+console.log(itemExitInArray('pão', ['arroz', 'feijão', 'pão']))
+
+
 
 /*
   06
