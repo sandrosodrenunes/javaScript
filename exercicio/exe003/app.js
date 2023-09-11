@@ -77,6 +77,11 @@ console.log(itemExitInArray('pão', ['arroz', 'feijão', 'pão']))
     argumentos em sua invocação;
 */
 
+const concatArray = (firstArray, secondArray) => firstArray.concat(secondArray)
+
+
+console.log(concatArray([1, 2, 3], [4, 5, 6]))
+
 /*
   07
 
@@ -84,12 +89,24 @@ console.log(itemExitInArray('pão', ['arroz', 'feijão', 'pão']))
     mas com o último item removido.
 */
 
+const popArray = (array) => {
+  array.pop()
+  return array
+}
+
+console.log(popArray([1, 2, 3]))
+
 /*
   08
 
   - Crie uma função que retorna se o valor passado como argumento em sua  
     invocação é null.
 */
+
+const isNull = (value) => value === null
+
+
+console.log(isNull(null))
 
 /*
   09
@@ -102,6 +119,17 @@ console.log(itemExitInArray('pão', ['arroz', 'feijão', 'pão']))
     foi exibido.
 */
 
+const showName = (callback) =>{
+  const name = 'Sandro'
+
+  callback(name)
+}
+
+showName((value)=>{
+  console.log(value)
+})
+
+
 /*
   10
 
@@ -112,6 +140,17 @@ console.log(itemExitInArray('pão', ['arroz', 'feijão', 'pão']))
   - Faça com que a invocação da função descrita no 1º item deste exercício (10)  
     resulte no triplo de 33.
 */
+const triplo = (callback) =>{
+  const number = 11
+
+  callback(number)
+}
+
+triplo((value)=>{
+  value = value * 3
+  console.log(value)
+})
+
 
 /*
   11
@@ -124,6 +163,10 @@ console.log(itemExitInArray('pão', ['arroz', 'feijão', 'pão']))
 
 const numbers = [1, 2, 3]
 
+numbers.forEach((number, index, array)=>{
+  console.log(`O ${index} item do array ${array} é ${number}.`)
+})
+
 /*
   12
 
@@ -135,9 +178,15 @@ const numbers = [1, 2, 3]
 const letters = ['v', 'e', 'p']
 let lettersCopy = []
 
-for (let i = 0; i < letters.length; i++) {
-  lettersCopy.push(letters[i])
-}
+// for (let i = 0; i < letters.length; i++) {
+//   lettersCopy.push(letters[i])
+// }
+
+letters.forEach((letter)=>{
+  lettersCopy.push(letter)
+})
+
+console.log(lettersCopy)
 
 /*
   13
@@ -168,6 +217,10 @@ const review = [
 
 let paragraphs = ''
 
+review.forEach((paragraph)=>{
+  paragraphs += `<p>${paragraph}<p/>`
+})
+
 section.innerHTML = paragraphs
 
 /*
@@ -190,3 +243,29 @@ section.innerHTML = paragraphs
     pelo restante da quantidade de pessoas que curtiram o post (além das duas  
     pessoas já mencionadas no início da mensagem).
 */
+
+const likePoster = (array)=>{
+  const lengthArray = array.length
+  let mensage = ''
+
+  switch (lengthArray){
+    case 0:
+      mensage = 'Ninguém curtiu isso'
+      break
+    case 1:
+      mensage = `${array[0]} curtiu isso`
+      break
+    case 2:
+      mensage = `${array[0]} e ${array[1]} curtiram isso`
+      break 
+    case 3:
+      mensage = `${array[0]} , ${array[1]} e ${array[2]} curtiram isso"`
+      break  
+    default:
+      mensage = `${array[0]} e ${array[1]} mais ${lengthArray} pessoas curtiram isso`
+      break                  
+  }
+ return mensage
+}
+
+console.log(likePoster(['Sandro', 'Junior', 'Peu', 'Chaves']))
