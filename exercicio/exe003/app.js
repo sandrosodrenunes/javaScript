@@ -17,7 +17,7 @@
 //   return String(value)
 // }
 
-const convertToString = (value) => String(value)
+const convertToString = value => String(value)
 
 console.log(convertToString(12))
 
@@ -28,9 +28,9 @@ console.log(convertToString(12))
     recebida por parâmetro possui.
 */
 
-const counterCaractere = (string) => string.length
+const getStringLength = string => string.length
 
-console.log(counterCaractere('Olá, mundo'))
+console.log(getStringLength('Olá, mundo'))
 
 /*
   03
@@ -42,10 +42,10 @@ console.log(counterCaractere('Olá, mundo'))
   "CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO"
 */
 
-const transformeToLowerCase = (string) => string.toLowerCase()
+const convertToLowerCase = string => string.toLowerCase()
 
 
-console.log(transformeToLowerCase(`CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO`))
+console.log(convertToLowerCase(`CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO`))
 /*
   04
 
@@ -53,9 +53,9 @@ console.log(transformeToLowerCase(`CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO 
   - Ao ser invocada, a função deve retornar o index do caractere na string.
 */
 
-const returnIndexCaracter = (caracter, string) => string.indexOf(caracter)
+const getIndex = (caracter, string) => string.indexOf(caracter)
 
-console.log(returnIndexCaracter('@','sandro@sodre.com'))
+console.log(getIndex('@','sandro@sodre.com'))
 
 /*
   05
@@ -64,9 +64,9 @@ console.log(returnIndexCaracter('@','sandro@sodre.com'))
     passado por argumento existe no array (também passado por argumento).
 */
 
-const itemExitInArray = (item, array) => array.includes(item)
+const isItemIncludes = (item, array) => array.includes(item)
 
-console.log(itemExitInArray('pão', ['arroz', 'feijão', 'pão']))
+console.log(isItemIncludes('pão', ['arroz', 'feijão', 'pão']))
 
 
 
@@ -77,10 +77,10 @@ console.log(itemExitInArray('pão', ['arroz', 'feijão', 'pão']))
     argumentos em sua invocação;
 */
 
-const concatArray = (firstArray, secondArray) => firstArray.concat(secondArray)
+const concatArrays = (firstArray, secondArray) => firstArray.concat(secondArray)
 
 
-console.log(concatArray([1, 2, 3], [4, 5, 6]))
+console.log(concatArrays([1, 2, 3], [4, 5, 6]))
 
 /*
   07
@@ -89,12 +89,12 @@ console.log(concatArray([1, 2, 3], [4, 5, 6]))
     mas com o último item removido.
 */
 
-const popArray = (array) => {
+const removeLastItem = array => {
   array.pop()
   return array
 }
 
-console.log(popArray([1, 2, 3]))
+console.log(removeLastItem([1, 2, 3]))
 
 /*
   08
@@ -103,7 +103,7 @@ console.log(popArray([1, 2, 3]))
     invocação é null.
 */
 
-const isNull = (value) => value === null
+const isNull = value => value === null
 
 
 console.log(isNull(null))
@@ -119,15 +119,15 @@ console.log(isNull(null))
     foi exibido.
 */
 
-const showName = (callback) =>{
-  const name = 'Sandro'
+// const invokeCallback = callback =>{
+//   callback()
+// }
 
-  callback(name)
-}
+// const logName = () =>{
+//   console.log('Sandro Junior')  
+// }
 
-showName((value)=>{
-  console.log(value)
-})
+// invokeCallback(logName)
 
 
 /*
@@ -140,17 +140,14 @@ showName((value)=>{
   - Faça com que a invocação da função descrita no 1º item deste exercício (10)  
     resulte no triplo de 33.
 */
-const triplo = (callback) =>{
-  const number = 11
 
-  callback(number)
+const invokeCallback = (value, callback) =>{
+  return callback(value)
 }
 
-triplo((value)=>{
-  value = value * 3
-  console.log(value)
-})
+const threefoldNumber = number => number * 3 
 
+console.log(invokeCallback(33 ,threefoldNumber)) 
 
 /*
   11
@@ -163,9 +160,13 @@ triplo((value)=>{
 
 const numbers = [1, 2, 3]
 
-numbers.forEach((number, index, array)=>{
-  console.log(`O ${index} item do array ${array} é ${number}.`)
-})
+const showNumberInfo = (number, index, array)=>{
+  const itemPosition = index + 1
+  const items  = array.join(', ')
+  console.log(`O ${itemPosition} item do array ${items} é ${number}.`)
+}
+
+numbers.forEach(showNumberInfo)
 
 /*
   12
@@ -182,7 +183,7 @@ let lettersCopy = []
 //   lettersCopy.push(letters[i])
 // }
 
-letters.forEach((letter)=>{
+letters.forEach(letter => {
   lettersCopy.push(letter)
 })
 
@@ -217,9 +218,12 @@ const review = [
 
 let paragraphs = ''
 
-review.forEach((paragraph)=>{
-  paragraphs += `<p>${paragraph}<p/>`
-})
+const createParagraph = (paragraph)=>{
+  const string = `<p>${paragraph}<p/>`
+  paragraphs += string
+}
+
+review.forEach(createParagraph)
 
 section.innerHTML = paragraphs
 
@@ -244,28 +248,28 @@ section.innerHTML = paragraphs
     pessoas já mencionadas no início da mensagem).
 */
 
-const likePoster = (array)=>{
-  const lengthArray = array.length
+const likePoster = (array) => {
+  const firstName  = array[0]
+  const secondName  = array[1]
+  const trirdName  = array[2]
+  const totalNamesMinusTwo = array.length -2
   let mensage = ''
 
-  switch (lengthArray){
+  switch (array.length){
     case 0:
-      mensage = 'Ninguém curtiu isso'
-      break
+      return mensage = 'Ninguém curtiu isso'
     case 1:
-      mensage = `${array[0]} curtiu isso`
-      break
+      return mensage = `${firstName} curtiu isso`
     case 2:
-      mensage = `${array[0]} e ${array[1]} curtiram isso`
-      break 
+      return mensage = `${firstName} e ${secondName} curtiram isso`
     case 3:
-      mensage = `${array[0]} , ${array[1]} e ${array[2]} curtiram isso"`
-      break  
+      return mensage = `${firstName} , ${secondName} e ${trirdName} curtiram isso"`
     default:
-      mensage = `${array[0]} e ${array[1]} mais ${lengthArray} pessoas curtiram isso`
-      break                  
+      return mensage = `${firstName} e ${secondName} mais ${totalNamesMinusTwo} pessoas curtiram isso`            
   }
- return mensage
 }
 
+
 console.log(likePoster(['Sandro', 'Junior', 'Peu', 'Chaves']))
+
+section.innerHTML += `<p>${likePoster(['Sandro', 'Junior', 'Peu', 'Chaves'])}</p>`
