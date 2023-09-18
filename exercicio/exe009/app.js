@@ -29,7 +29,7 @@ const best2019Movies = [
 
 let bestMoviesInfo = ''
 
-best2019Movies.forEach((best2019Movie)=>{
+best2019Movies.forEach(best2019Movie => {
   bestMoviesInfo += `- ${best2019Movie.title}, dirigido por ${best2019Movie.directedBy}
 ` 
 })
@@ -70,20 +70,20 @@ const youtubeUser = {
     },
     country: 'Brasil'
   },
-  showVideos () {
+  showVideosInfo () {
     let stringRecentVideos = ''
 
-    youtubeUser.videos.recentVideos.forEach( (video) => {
+    youtubeUser.videos.recentVideos.forEach(video => {
       stringRecentVideos += `
       ${video.title}
       `
     })
-    console.log(`Vídeos recentes de Roger Melo:
+    console.log(`Vídeos recentes de ${this.name}:
     ${stringRecentVideos}`)
   }
 }
 
-youtubeUser.showVideos()
+youtubeUser.showVideosInfo()
 
 
 
